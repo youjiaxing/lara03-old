@@ -14,13 +14,13 @@
 </head>
 <body>
     <div id="app" class="{{ route_class() }}-page">
-        @include('layout._header');
+        @include('layouts._header');
 
         <div class="container">
             @yield('content')
         </div>
 
-        @include('layout._footer')
+        @include('layouts._footer')
     </div>
 
     {{-- Scripts --}}
