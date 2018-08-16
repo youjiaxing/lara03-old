@@ -8398,3 +8398,11 @@ html {
   color: inherit;
 }
 
+/* User register pages */
+
+.register-page img.captcha {
+  margin-bottom: 0;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
