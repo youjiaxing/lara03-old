@@ -32,6 +32,7 @@ class Topic extends Model
         }
 
         return $query->with('user', 'category');
+
     }
 
 
