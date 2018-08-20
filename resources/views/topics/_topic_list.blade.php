@@ -10,7 +10,7 @@
 
                 <div class="media-body">
                     <div class="media-heading">
-                        <a href="{{ route('topics.show', [$topic->cate]) }}">
+                        <a href="{{ route('topics.show', [$topic->id]) }}">
                             {{ $topic->title }}
                         </a>
                         <a href="{{ route('topics.show', [$topic->id]) }}" class="pull-right">
@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="meta">
-                        <a href="#">
+                        <a href="{{ route('categories.show', [$topic->category->id]) }}">
                             <span class="glyphicon glyphicon-folder-open"></span>
                             {{ $topic->category->name }}
                         </a>
