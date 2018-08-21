@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/simditor.css') }}">
+@endsection
+
 @section('content')
 
 <div class="container">
@@ -48,11 +52,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="body" class="col-sm-2 control-label">内容</label>
-                        <div class="col-sm-10">
-                            <textarea required class="form-control" name="body" id="body" rows="3" placeholder="请填入至少三个字符的内容">{{ old('body', $topic->body) }}</textarea>
-                        </div>
+                        <label for="editor" class="col-sm-2 control-label">内容</label>
+                        {{--<div class="col-sm-10">--}}
+                            {{--<textarea required class="form-control" name="body" id="editor" rows="3" placeholder="请填入至少三个字符的内容">{{ old('body', $topic->body) }}</textarea>--}}
+                        {{--</div>--}}
 
+                        <div class="col-sm-10 col-sm-offset-2">
+                        <textarea name="body" hidden id="editor" placeholder="请填入至少三个字符的内容">{{ old('body', $topic->body) }}</textarea>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -68,5 +75,21 @@
         </div>
     </div>
 </div>
+
+@endsection
+
+@section('script')
+    <script src="{{ asset('js/module.js') }}"></script>
+    <script src="{{ asset('js/hotkeys.js') }}"></script>
+    <script src="{{ asset('js/uploader.js') }}"></script>
+    <script src="{{ asset('js/simditor.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            var editor = new Simditor({
+                textarea: $('#editor'),
+            });
+        })
+    </script>
 
 @endsection
