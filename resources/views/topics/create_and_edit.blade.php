@@ -11,16 +11,16 @@
 
             <div class="panel-body">
                 @if ($topic->id)
-                    <form action="{{ route('topics.update', [$topic->id]) }}" method="post" class="form-horizontal" role="form"></form>
+                    <form action="{{ route('topics.update', [$topic->id]) }}" method="post" class="form-horizontal" role="form">
                     {{ method_field('PATCH') }}
                 @else
                     <form action="{{ route('topics.store') }}" method="post" class="form-horizontal" role="form">
                 @endif
                     <legend class="text-center"><span class="glyphicon glyphicon-edit"></span>
                         @if ($topic->id)
-                            新建话题
-                        @else
                             编辑话题
+                        @else
+                            新建话题
                         @endif
                     </legend>
 
@@ -44,7 +44,7 @@
                                 @endempty
 
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}" {{ old('category_id', $topic->category) == $category->id ? ' selected' : '' }}>{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}" {{ old('category_id', $topic->category_id) == $category->id ? ' selected' : '' }}>{{ $category->name }}</option>
                                 @endforeach
                             </select>
                         </div>
