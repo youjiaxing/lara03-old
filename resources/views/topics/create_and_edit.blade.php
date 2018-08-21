@@ -5,9 +5,7 @@
 @endsection
 
 @section('content')
-
-<div class="container">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-12">
         <div class="panel panel-default">
 
             <div class="panel-body">
@@ -30,15 +28,15 @@
                     {{ csrf_field() }}
 
                     <div class="form-group">
-                        <label for="title" class="col-sm-2 control-label">标题</label>
-                        <div class="col-sm-10">
+                        <label for="title" class="col-md-1 control-label">标题</label>
+                        <div class="col-md-10">
                             <input type="text" class="form-control" name="title" id="title" placeholder="请填写标题" required value="{{ old('title', $topic->title) }}">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="category_id" class="col-sm-2 control-label">分类</label>
-                        <div class="col-sm-10">
+                        <label for="category_id" class="col-md-1 control-label">分类</label>
+                        <div class="col-md-10">
                             <select class="form-control" id="category_id" name="category_id" required>
                                 @empty(old('category_id', $topic->category))
                                     <option value="" hidden disabled selected>请选择分类</option>
@@ -52,18 +50,18 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="editor" class="col-sm-2 control-label">内容</label>
-                        {{--<div class="col-sm-10">--}}
+                        <label for="editor" class="col-md-1 control-label">内容</label>
+                        {{--<div class="col-md-10">--}}
                             {{--<textarea required class="form-control" name="body" id="editor" rows="3" placeholder="请填入至少三个字符的内容">{{ old('body', $topic->body) }}</textarea>--}}
                         {{--</div>--}}
 
-                        <div class="col-sm-10 col-sm-offset-2">
+                        <div class="col-md-10">
                         <textarea name="body" hidden id="editor" placeholder="请填入至少三个字符的内容">{{ old('body', $topic->body) }}</textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="col-sm-10 col-sm-offset-2">
+                        <div class="col-md-10 col-md-offset-1">
                             <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Submit</button>
                         </div>
                     </div>
@@ -74,8 +72,6 @@
 
         </div>
     </div>
-</div>
-
 @endsection
 
 @section('script')
