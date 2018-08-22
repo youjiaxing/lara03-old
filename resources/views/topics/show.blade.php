@@ -4,6 +4,7 @@
 @section('description', $topic->excerpt)
 
 @section('content')
+<div class="row">
     <div class="col-md-3 hidden-sm hidden-xs author-info">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -48,6 +49,16 @@
                 @endcan
             </div>
         </div>
-    </div>
 
+        {{-- 用户回复列表 --}}
+        <div class="panel panel-default topic-reply">
+            <div class="panel-body">
+                {{-- 回复框 --}}
+                @include('topics._reply_box', ['topic' => $topic])
+                {{-- 评论列表 --}}
+                @include('topics._reply_list', ['replies' => $topic->replies()->with('user')->get()])
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
