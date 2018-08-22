@@ -12,7 +12,8 @@ class ReplyRequest extends Request
             case 'POST':
             {
                 return [
-                    // CREATE ROLES
+                    'content' => 'required|min:3',
+                    'topic_id' => 'required|exists:topics,id'
                 ];
             }
             // UPDATE

@@ -54,7 +54,7 @@
         <div class="panel panel-default topic-reply">
             <div class="panel-body">
                 {{-- 回复框 --}}
-                @include('topics._reply_box', ['topic' => $topic])
+                @includeWhen(Auth::check() , 'topics._reply_box', ['topic' => $topic])
                 {{-- 评论列表 --}}
                 @include('topics._reply_list', ['replies' => $topic->replies()->with('user')->get()])
             </div>
