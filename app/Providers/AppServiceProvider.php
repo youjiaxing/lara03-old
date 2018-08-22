@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Handlers\SlugTranslateHandler;
 use App\Models\Topic;
 use App\Observers\TopicObserver;
 use Illuminate\Support\ServiceProvider;
@@ -31,5 +32,8 @@ class AppServiceProvider extends ServiceProvider
 
         \Carbon\Carbon::setLocale('zh');
 
+        $this->app->singleton(SlugTranslateHandler::class, function ($app) {
+            return new SlugTranslateHandler();
+        });
     }
 }
