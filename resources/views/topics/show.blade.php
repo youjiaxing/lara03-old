@@ -56,7 +56,7 @@
                 {{-- 回复框 --}}
                 @includeWhen(Auth::check() , 'topics._reply_box', ['topic' => $topic])
                 {{-- 评论列表 --}}
-                @include('topics._reply_list', ['replies' => $topic->replies()->with('user')->get()])
+                @include('topics._reply_list', ['replies' => $topic->replies()->with('user', 'topic')->get()])
             </div>
         </div>
     </div>
