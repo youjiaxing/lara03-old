@@ -16,11 +16,16 @@
                     {!! $reply->content !!}
                 </div>
             </div>
+            @can('destroy', $reply)
             <div class="media-right">
-                <a href="#" class="">
-                    <span class="glyphicon glyphicon-trash"></span>
-                </a>
+                <form action="{{ route('replies.destroy', [$reply->id]) }}" method="post" role="form">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+
+                    <button type="submit" class="btn btn-link btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
+                </form>
             </div>
+            @endcan
         </li>
     @endforeach
 </ul>
