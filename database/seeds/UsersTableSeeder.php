@@ -38,9 +38,7 @@ class UsersTableSeeder extends Seeder
                     $user->email = "287009007@qq.com";
                     $user->avatar = 'https://fsdhubcdn.phphub.org/uploads/images/201710/14/1/ZqM7iaP4CR.png?imageView2/1/w/200/h/200';
 //                    $user->assignRole('Founder');
-                }
-
-                if ($index == 1) {
+                }else if ($index == 1) {
                     $user->email = "love123i@163.com";
 //                    $user->assignRole('Maintainer');
                 }

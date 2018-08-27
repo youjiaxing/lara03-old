@@ -8,6 +8,7 @@ use App\Models\Topic;
 use App\Observers\ReplyObserver;
 use App\Observers\TopicObserver;
 use Illuminate\Support\ServiceProvider;
+use VIACreative\SudoSu\SudoSu;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,14 +30,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->environment() !== 'production') {
-            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-        }
-
         \Carbon\Carbon::setLocale('zh');
 
         $this->app->singleton(SlugTranslateHandler::class, function ($app) {
             return new SlugTranslateHandler();
         });
+
+        if (app()->isLocal()) {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+            $this->app->register(\VIACreative\SudoSu\ServiceProvider::class);
+        }
     }
 }
