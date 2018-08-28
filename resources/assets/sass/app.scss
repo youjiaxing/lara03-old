@@ -199,3 +199,19 @@ html {
         background-color: #d15b47 !important;
     }
 }
+
+
+/* Sidebar */
+.sidebar {
+    .panel-body {
+        padding: 12px;
+    }
+
+    .active-users {
+        a.media {
+            color: #797878;
+            line-height: 26px;
+            font-style: 0.9em;
+        }
+    }
+}

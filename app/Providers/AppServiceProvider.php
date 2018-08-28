@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Handlers\SlugTranslateHandler;
+use App\Models\Link;
 use App\Models\Reply;
 use App\Models\Topic;
+use App\Observers\LinkObserver;
 use App\Observers\ReplyObserver;
 use App\Observers\TopicObserver;
 use Illuminate\Support\ServiceProvider;
@@ -21,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Topic::observe(TopicObserver::class);
         Reply::observe(ReplyObserver::class);
+        Link::observe(LinkObserver::class);
+
+        \Carbon\Carbon::setLocale('zh');
     }
 
     /**
@@ -30,8 +35,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        \Carbon\Carbon::setLocale('zh');
-
         $this->app->singleton(SlugTranslateHandler::class, function ($app) {
             return new SlugTranslateHandler();
         });
