@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.5.42 on 2018-08-16 17:56:10.
+ * Generated for Laravel 5.5.42 on 2018-09-01 17:35:49.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -6714,6 +6714,46 @@ namespace Illuminate\Support\Facades {
          
     }
 
+    class Redis {
+        
+        /**
+         * Get a Redis connection by name.
+         *
+         * @param string|null $name
+         * @return \Illuminate\Redis\Connections\Connection 
+         * @static 
+         */ 
+        public static function connection($name = null)
+        {
+            return \Illuminate\Redis\RedisManager::connection($name);
+        }
+        
+        /**
+         * Resolve the given connection by name.
+         *
+         * @param string|null $name
+         * @return \Illuminate\Redis\Connections\Connection 
+         * @throws \InvalidArgumentException
+         * @static 
+         */ 
+        public static function resolve($name = null)
+        {
+            return \Illuminate\Redis\RedisManager::resolve($name);
+        }
+        
+        /**
+         * Return all of the created connections.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function connections()
+        {
+            return \Illuminate\Redis\RedisManager::connections();
+        }
+         
+    }
+
     class Request {
         
         /**
@@ -12278,132 +12318,1080 @@ namespace Illuminate\Support\Facades {
  
 }
 
-namespace Intervention\Image\Facades { 
+namespace Barryvdh\Debugbar { 
 
-    class Image {
+    class Facade {
         
         /**
-         * Overrides configuration settings
+         * Enable the Debugbar and boot, if not already booted.
          *
-         * @param array $config
-         * @return self 
          * @static 
          */ 
-        public static function configure($config = array())
+        public static function enable()
         {
-            return \Intervention\Image\ImageManager::configure($config);
+            return \Barryvdh\Debugbar\LaravelDebugbar::enable();
         }
         
         /**
-         * Initiates an Image instance from different input types
+         * Boot the debugbar (add collectors, renderer and listener)
          *
-         * @param mixed $data
-         * @return \Intervention\Image\Image 
          * @static 
          */ 
-        public static function make($data)
+        public static function boot()
         {
-            return \Intervention\Image\ImageManager::make($data);
+            return \Barryvdh\Debugbar\LaravelDebugbar::boot();
         }
         
         /**
-         * Creates an empty image canvas
+         * 
          *
-         * @param int $width
-         * @param int $height
-         * @param mixed $background
-         * @return \Intervention\Image\Image 
          * @static 
          */ 
-        public static function canvas($width, $height, $background = null)
+        public static function shouldCollect($name, $default = false)
         {
-            return \Intervention\Image\ImageManager::canvas($width, $height, $background);
+            return \Barryvdh\Debugbar\LaravelDebugbar::shouldCollect($name, $default);
         }
         
         /**
-         * Create new cached image and run callback
-         * (requires additional package intervention/imagecache)
+         * Adds a data collector
          *
-         * @param \Closure $callback
-         * @param int $lifetime
-         * @param boolean $returnObj
-         * @return \Image 
+         * @param \Barryvdh\Debugbar\DataCollectorInterface $collector
+         * @throws DebugBarException
+         * @return $this 
          * @static 
          */ 
-        public static function cache($callback, $lifetime = null, $returnObj = false)
+        public static function addCollector($collector)
         {
-            return \Intervention\Image\ImageManager::cache($callback, $lifetime, $returnObj);
+            return \Barryvdh\Debugbar\LaravelDebugbar::addCollector($collector);
+        }
+        
+        /**
+         * Handle silenced errors
+         *
+         * @param $level
+         * @param $message
+         * @param string $file
+         * @param int $line
+         * @param array $context
+         * @throws \ErrorException
+         * @static 
+         */ 
+        public static function handleError($level, $message, $file = '', $line = 0, $context = array())
+        {
+            return \Barryvdh\Debugbar\LaravelDebugbar::handleError($level, $message, $file, $line, $context);
+        }
+        
+        /**
+         * Starts a measure
+         *
+         * @param string $name Internal name, used to stop the measure
+         * @param string $label Public name
+         * @static 
+         */ 
+        public static function startMeasure($name, $label = null)
+        {
+            return \Barryvdh\Debugbar\LaravelDebugbar::startMeasure($name, $label);
+        }
+        
+        /**
+         * Stops a measure
+         *
+         * @param string $name
+         * @static 
+         */ 
+        public static function stopMeasure($name)
+        {
+            return \Barryvdh\Debugbar\LaravelDebugbar::stopMeasure($name);
+        }
+        
+        /**
+         * Adds an exception to be profiled in the debug bar
+         *
+         * @param \Exception $e
+         * @deprecated in favor of addThrowable
+         * @static 
+         */ 
+        public static function addException($e)
+        {
+            return \Barryvdh\Debugbar\LaravelDebugbar::addException($e);
+        }
+        
+        /**
+         * Adds an exception to be profiled in the debug bar
+         *
+         * @param \Exception $e
+         * @static 
+         */ 
+        public static function addThrowable($e)
+        {
+            return \Barryvdh\Debugbar\LaravelDebugbar::addThrowable($e);
+        }
+        
+        /**
+         * Returns a JavascriptRenderer for this instance
+         *
+         * @param string $baseUrl
+         * @param string $basePathng
+         * @return \Barryvdh\Debugbar\JavascriptRenderer 
+         * @static 
+         */ 
+        public static function getJavascriptRenderer($baseUrl = null, $basePath = null)
+        {
+            return \Barryvdh\Debugbar\LaravelDebugbar::getJavascriptRenderer($baseUrl, $basePath);
+        }
+        
+        /**
+         * Modify the response and inject the debugbar (or data in headers)
+         *
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @param \Symfony\Component\HttpFoundation\Response $response
+         * @return \Symfony\Component\HttpFoundation\Response 
+         * @static 
+         */ 
+        public static function modifyResponse($request, $response)
+        {
+            return \Barryvdh\Debugbar\LaravelDebugbar::modifyResponse($request, $response);
+        }
+        
+        /**
+         * Check if the Debugbar is enabled
+         *
+         * @return boolean 
+         * @static 
+         */ 
+        public static function isEnabled()
+        {
+            return \Barryvdh\Debugbar\LaravelDebugbar::isEnabled();
+        }
+        
+        /**
+         * Collects the data from the collectors
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function collect()
+        {
+            return \Barryvdh\Debugbar\LaravelDebugbar::collect();
+        }
+        
+        /**
+         * Injects the web debug toolbar into the given Response.
+         *
+         * @param \Symfony\Component\HttpFoundation\Response $response A Response instance
+         * Based on https://github.com/symfony/WebProfilerBundle/blob/master/EventListener/WebDebugToolbarListener.php
+         * @static 
+         */ 
+        public static function injectDebugbar($response)
+        {
+            return \Barryvdh\Debugbar\LaravelDebugbar::injectDebugbar($response);
+        }
+        
+        /**
+         * Disable the Debugbar
+         *
+         * @static 
+         */ 
+        public static function disable()
+        {
+            return \Barryvdh\Debugbar\LaravelDebugbar::disable();
+        }
+        
+        /**
+         * Adds a measure
+         *
+         * @param string $label
+         * @param float $start
+         * @param float $end
+         * @static 
+         */ 
+        public static function addMeasure($label, $start, $end)
+        {
+            return \Barryvdh\Debugbar\LaravelDebugbar::addMeasure($label, $start, $end);
+        }
+        
+        /**
+         * Utility function to measure the execution of a Closure
+         *
+         * @param string $label
+         * @param \Closure $closure
+         * @static 
+         */ 
+        public static function measure($label, $closure)
+        {
+            return \Barryvdh\Debugbar\LaravelDebugbar::measure($label, $closure);
+        }
+        
+        /**
+         * Collect data in a CLI request
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function collectConsole()
+        {
+            return \Barryvdh\Debugbar\LaravelDebugbar::collectConsole();
+        }
+        
+        /**
+         * Adds a message to the MessagesCollector
+         * 
+         * A message can be anything from an object to a string
+         *
+         * @param mixed $message
+         * @param string $label
+         * @static 
+         */ 
+        public static function addMessage($message, $label = 'info')
+        {
+            return \Barryvdh\Debugbar\LaravelDebugbar::addMessage($message, $label);
+        }
+        
+        /**
+         * Checks if a data collector has been added
+         *
+         * @param string $name
+         * @return boolean 
+         * @static 
+         */ 
+        public static function hasCollector($name)
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::hasCollector($name);
+        }
+        
+        /**
+         * Returns a data collector
+         *
+         * @param string $name
+         * @return \DebugBar\DataCollectorInterface 
+         * @throws DebugBarException
+         * @static 
+         */ 
+        public static function getCollector($name)
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::getCollector($name);
+        }
+        
+        /**
+         * Returns an array of all data collectors
+         *
+         * @return \DebugBar\array[DataCollectorInterface] 
+         * @static 
+         */ 
+        public static function getCollectors()
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::getCollectors();
+        }
+        
+        /**
+         * Sets the request id generator
+         *
+         * @param \DebugBar\RequestIdGeneratorInterface $generator
+         * @return $this 
+         * @static 
+         */ 
+        public static function setRequestIdGenerator($generator)
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::setRequestIdGenerator($generator);
+        }
+        
+        /**
+         * 
+         *
+         * @return \DebugBar\RequestIdGeneratorInterface 
+         * @static 
+         */ 
+        public static function getRequestIdGenerator()
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::getRequestIdGenerator();
+        }
+        
+        /**
+         * Returns the id of the current request
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getCurrentRequestId()
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::getCurrentRequestId();
+        }
+        
+        /**
+         * Sets the storage backend to use to store the collected data
+         *
+         * @param \DebugBar\StorageInterface $storage
+         * @return $this 
+         * @static 
+         */ 
+        public static function setStorage($storage = null)
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::setStorage($storage);
+        }
+        
+        /**
+         * 
+         *
+         * @return \DebugBar\StorageInterface 
+         * @static 
+         */ 
+        public static function getStorage()
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::getStorage();
+        }
+        
+        /**
+         * Checks if the data will be persisted
+         *
+         * @return boolean 
+         * @static 
+         */ 
+        public static function isDataPersisted()
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::isDataPersisted();
+        }
+        
+        /**
+         * Sets the HTTP driver
+         *
+         * @param \DebugBar\HttpDriverInterface $driver
+         * @return $this 
+         * @static 
+         */ 
+        public static function setHttpDriver($driver)
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::setHttpDriver($driver);
+        }
+        
+        /**
+         * Returns the HTTP driver
+         * 
+         * If no http driver where defined, a PhpHttpDriver is automatically created
+         *
+         * @return \DebugBar\HttpDriverInterface 
+         * @static 
+         */ 
+        public static function getHttpDriver()
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::getHttpDriver();
+        }
+        
+        /**
+         * Returns collected data
+         * 
+         * Will collect the data if none have been collected yet
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getData()
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::getData();
+        }
+        
+        /**
+         * Returns an array of HTTP headers containing the data
+         *
+         * @param string $headerName
+         * @param integer $maxHeaderLength
+         * @return array 
+         * @static 
+         */ 
+        public static function getDataAsHeaders($headerName = 'phpdebugbar', $maxHeaderLength = 4096, $maxTotalHeaderLength = 250000)
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::getDataAsHeaders($headerName, $maxHeaderLength, $maxTotalHeaderLength);
+        }
+        
+        /**
+         * Sends the data through the HTTP headers
+         *
+         * @param bool $useOpenHandler
+         * @param string $headerName
+         * @param integer $maxHeaderLength
+         * @return $this 
+         * @static 
+         */ 
+        public static function sendDataInHeaders($useOpenHandler = null, $headerName = 'phpdebugbar', $maxHeaderLength = 4096)
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::sendDataInHeaders($useOpenHandler, $headerName, $maxHeaderLength);
+        }
+        
+        /**
+         * Stacks the data in the session for later rendering
+         *
+         * @static 
+         */ 
+        public static function stackData()
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::stackData();
+        }
+        
+        /**
+         * Checks if there is stacked data in the session
+         *
+         * @return boolean 
+         * @static 
+         */ 
+        public static function hasStackedData()
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::hasStackedData();
+        }
+        
+        /**
+         * Returns the data stacked in the session
+         *
+         * @param boolean $delete Whether to delete the data in the session
+         * @return array 
+         * @static 
+         */ 
+        public static function getStackedData($delete = true)
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::getStackedData($delete);
+        }
+        
+        /**
+         * Sets the key to use in the $_SESSION array
+         *
+         * @param string $ns
+         * @return $this 
+         * @static 
+         */ 
+        public static function setStackDataSessionNamespace($ns)
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::setStackDataSessionNamespace($ns);
+        }
+        
+        /**
+         * Returns the key used in the $_SESSION array
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getStackDataSessionNamespace()
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::getStackDataSessionNamespace();
+        }
+        
+        /**
+         * Sets whether to only use the session to store stacked data even
+         * if a storage is enabled
+         *
+         * @param boolean $enabled
+         * @return $this 
+         * @static 
+         */ 
+        public static function setStackAlwaysUseSessionStorage($enabled = true)
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::setStackAlwaysUseSessionStorage($enabled);
+        }
+        
+        /**
+         * Checks if the session is always used to store stacked data
+         * even if a storage is enabled
+         *
+         * @return boolean 
+         * @static 
+         */ 
+        public static function isStackAlwaysUseSessionStorage()
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::isStackAlwaysUseSessionStorage();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function offsetSet($key, $value)
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::offsetSet($key, $value);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function offsetGet($key)
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::offsetGet($key);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function offsetExists($key)
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::offsetExists($key);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function offsetUnset($key)
+        {
+            //Method inherited from \DebugBar\DebugBar            
+            return \Barryvdh\Debugbar\LaravelDebugbar::offsetUnset($key);
         }
          
     }
  
 }
 
-namespace Mews\Captcha\Facades { 
+namespace Dingo\Api\Facade { 
 
-    class Captcha {
+    class API {
         
         /**
-         * Create captcha image
+         * Attach files to be uploaded.
          *
-         * @param string $config
-         * @param boolean $api
-         * @return \Mews\Captcha\ImageManager->response 
+         * @param array $files
+         * @return \Dingo\Api\Dispatcher 
          * @static 
          */ 
-        public static function create($config = 'default', $api = false)
+        public static function attach($files)
         {
-            return \Mews\Captcha\Captcha::create($config, $api);
+            return \Dingo\Api\Dispatcher::attach($files);
         }
         
         /**
-         * Captcha check
+         * Internal request will be authenticated as the given user.
          *
+         * @param mixed $user
+         * @return \Dingo\Api\Dispatcher 
+         * @static 
+         */ 
+        public static function be($user)
+        {
+            return \Dingo\Api\Dispatcher::be($user);
+        }
+        
+        /**
+         * Send a JSON payload in the request body.
+         *
+         * @param string|array $content
+         * @return \Dingo\Api\Dispatcher 
+         * @static 
+         */ 
+        public static function json($content)
+        {
+            return \Dingo\Api\Dispatcher::json($content);
+        }
+        
+        /**
+         * Sets the domain to be used for the request.
+         *
+         * @param string $domain
+         * @return \Dingo\Api\Dispatcher 
+         * @static 
+         */ 
+        public static function on($domain)
+        {
+            return \Dingo\Api\Dispatcher::on($domain);
+        }
+        
+        /**
+         * Return the raw response object once request is dispatched.
+         *
+         * @return \Dingo\Api\Dispatcher 
+         * @static 
+         */ 
+        public static function raw()
+        {
+            return \Dingo\Api\Dispatcher::raw();
+        }
+        
+        /**
+         * Only authenticate with the given user for a single request.
+         *
+         * @return \Dingo\Api\Dispatcher 
+         * @static 
+         */ 
+        public static function once()
+        {
+            return \Dingo\Api\Dispatcher::once();
+        }
+        
+        /**
+         * Set the version of the API for the next request.
+         *
+         * @param string $version
+         * @return \Dingo\Api\Dispatcher 
+         * @static 
+         */ 
+        public static function version($version)
+        {
+            return \Dingo\Api\Dispatcher::version($version);
+        }
+        
+        /**
+         * Set the parameters to be sent on the next API request.
+         *
+         * @param string|array $parameters
+         * @return \Dingo\Api\Dispatcher 
+         * @static 
+         */ 
+        public static function with($parameters)
+        {
+            return \Dingo\Api\Dispatcher::with($parameters);
+        }
+        
+        /**
+         * Set a header to be sent on the next API request.
+         *
+         * @param string $key
+         * @param string $value
+         * @return \Dingo\Api\Dispatcher 
+         * @static 
+         */ 
+        public static function header($key, $value)
+        {
+            return \Dingo\Api\Dispatcher::header($key, $value);
+        }
+        
+        /**
+         * Set a cookie to be sent on the next API request.
+         *
+         * @param \Symfony\Component\HttpFoundation\Cookie $cookie
+         * @return \Dingo\Api\Dispatcher 
+         * @static 
+         */ 
+        public static function cookie($cookie)
+        {
+            return \Dingo\Api\Dispatcher::cookie($cookie);
+        }
+        
+        /**
+         * Perform API GET request.
+         *
+         * @param string $uri
+         * @param string|array $parameters
+         * @return mixed 
+         * @static 
+         */ 
+        public static function get($uri, $parameters = array())
+        {
+            return \Dingo\Api\Dispatcher::get($uri, $parameters);
+        }
+        
+        /**
+         * Perform API POST request.
+         *
+         * @param string $uri
+         * @param string|array $parameters
+         * @param string $content
+         * @return mixed 
+         * @static 
+         */ 
+        public static function post($uri, $parameters = array(), $content = '')
+        {
+            return \Dingo\Api\Dispatcher::post($uri, $parameters, $content);
+        }
+        
+        /**
+         * Perform API PUT request.
+         *
+         * @param string $uri
+         * @param string|array $parameters
+         * @param string $content
+         * @return mixed 
+         * @static 
+         */ 
+        public static function put($uri, $parameters = array(), $content = '')
+        {
+            return \Dingo\Api\Dispatcher::put($uri, $parameters, $content);
+        }
+        
+        /**
+         * Perform API PATCH request.
+         *
+         * @param string $uri
+         * @param string|array $parameters
+         * @param string $content
+         * @return mixed 
+         * @static 
+         */ 
+        public static function patch($uri, $parameters = array(), $content = '')
+        {
+            return \Dingo\Api\Dispatcher::patch($uri, $parameters, $content);
+        }
+        
+        /**
+         * Perform API DELETE request.
+         *
+         * @param string $uri
+         * @param string|array $parameters
+         * @param string $content
+         * @return mixed 
+         * @static 
+         */ 
+        public static function delete($uri, $parameters = array(), $content = '')
+        {
+            return \Dingo\Api\Dispatcher::delete($uri, $parameters, $content);
+        }
+        
+        /**
+         * Get the domain.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getDomain()
+        {
+            return \Dingo\Api\Dispatcher::getDomain();
+        }
+        
+        /**
+         * Get the version.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getVersion()
+        {
+            return \Dingo\Api\Dispatcher::getVersion();
+        }
+        
+        /**
+         * Get the format.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getFormat()
+        {
+            return \Dingo\Api\Dispatcher::getFormat();
+        }
+        
+        /**
+         * Get the subtype.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getSubtype()
+        {
+            return \Dingo\Api\Dispatcher::getSubtype();
+        }
+        
+        /**
+         * Set the subtype.
+         *
+         * @param string $subtype
+         * @return void 
+         * @static 
+         */ 
+        public static function setSubtype($subtype)
+        {
+            \Dingo\Api\Dispatcher::setSubtype($subtype);
+        }
+        
+        /**
+         * Get the standards tree.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getStandardsTree()
+        {
+            return \Dingo\Api\Dispatcher::getStandardsTree();
+        }
+        
+        /**
+         * Set the standards tree.
+         *
+         * @param string $standardsTree
+         * @return void 
+         * @static 
+         */ 
+        public static function setStandardsTree($standardsTree)
+        {
+            \Dingo\Api\Dispatcher::setStandardsTree($standardsTree);
+        }
+        
+        /**
+         * Set the prefix.
+         *
+         * @param string $prefix
+         * @return void 
+         * @static 
+         */ 
+        public static function setPrefix($prefix)
+        {
+            \Dingo\Api\Dispatcher::setPrefix($prefix);
+        }
+        
+        /**
+         * Set the default version.
+         *
+         * @param string $version
+         * @return void 
+         * @static 
+         */ 
+        public static function setDefaultVersion($version)
+        {
+            \Dingo\Api\Dispatcher::setDefaultVersion($version);
+        }
+        
+        /**
+         * Set the default domain.
+         *
+         * @param string $domain
+         * @return void 
+         * @static 
+         */ 
+        public static function setDefaultDomain($domain)
+        {
+            \Dingo\Api\Dispatcher::setDefaultDomain($domain);
+        }
+        
+        /**
+         * Set the default format.
+         *
+         * @param string $format
+         * @return void 
+         * @static 
+         */ 
+        public static function setDefaultFormat($format)
+        {
+            \Dingo\Api\Dispatcher::setDefaultFormat($format);
+        }
+         
+    }
+ 
+}
+
+namespace HieuLe\Active\Facades { 
+
+    class Active {
+        
+        /**
+         * Update the route and request instances
+         *
+         * @param \Route $route
+         * @param \Request $request
+         * @static 
+         */ 
+        public static function updateInstances($route, $request)
+        {
+            return \HieuLe\Active\Active::updateInstances($route, $request);
+        }
+        
+        /**
+         * Get the active class if the condition is not falsy
+         *
+         * @param $condition
+         * @param string $activeClass
+         * @param string $inactiveClass
+         * @return string 
+         * @static 
+         */ 
+        public static function getClassIf($condition, $activeClass = 'active', $inactiveClass = '')
+        {
+            return \HieuLe\Active\Active::getClassIf($condition, $activeClass, $inactiveClass);
+        }
+        
+        /**
+         * Check if the URI of the current request matches one of the specific URIs
+         *
+         * @param array|string $uris
+         * @return bool 
+         * @static 
+         */ 
+        public static function checkUri($uris)
+        {
+            return \HieuLe\Active\Active::checkUri($uris);
+        }
+        
+        /**
+         * Check if the current URI matches one of specific patterns (using `str_is`)
+         *
+         * @param array|string $patterns
+         * @return bool 
+         * @static 
+         */ 
+        public static function checkUriPattern($patterns)
+        {
+            return \HieuLe\Active\Active::checkUriPattern($patterns);
+        }
+        
+        /**
+         * Check if one of the following condition is true:
+         * + the value of $value is `false` and the current querystring contain the key $key
+         * + the value of $value is not `false` and the current value of the $key key in the querystring equals to $value
+         * + the value of $value is not `false` and the current value of the $key key in the querystring is an array that
+         * contains the $value
+         *
+         * @param string $key
+         * @param mixed $value
+         * @return bool 
+         * @static 
+         */ 
+        public static function checkQuery($key, $value)
+        {
+            return \HieuLe\Active\Active::checkQuery($key, $value);
+        }
+        
+        /**
+         * Check if the name of the current route matches one of specific values
+         *
+         * @param array|string $routeNames
+         * @return bool 
+         * @static 
+         */ 
+        public static function checkRoute($routeNames)
+        {
+            return \HieuLe\Active\Active::checkRoute($routeNames);
+        }
+        
+        /**
+         * Check the current route name with one or some patterns
+         *
+         * @param array|string $patterns
+         * @return bool 
+         * @static 
+         */ 
+        public static function checkRoutePattern($patterns)
+        {
+            return \HieuLe\Active\Active::checkRoutePattern($patterns);
+        }
+        
+        /**
+         * Check if the parameter of the current route has the correct value
+         *
+         * @param $param
          * @param $value
          * @return bool 
          * @static 
          */ 
-        public static function check($value)
+        public static function checkRouteParam($param, $value)
         {
-            return \Mews\Captcha\Captcha::check($value);
+            return \HieuLe\Active\Active::checkRouteParam($param, $value);
         }
         
         /**
-         * Captcha check
+         * Return 'active' class if current route action match one of provided action names
          *
-         * @param $value
+         * @param array|string $actions
          * @return bool 
          * @static 
          */ 
-        public static function check_api($value, $key)
+        public static function checkAction($actions)
         {
-            return \Mews\Captcha\Captcha::check_api($value, $key);
+            return \HieuLe\Active\Active::checkAction($actions);
         }
         
         /**
-         * Generate captcha image source
+         * Check if the current controller class matches one of specific values
          *
-         * @param null $config
-         * @return string 
+         * @param array|string $controllers
+         * @return bool 
          * @static 
          */ 
-        public static function src($config = null)
+        public static function checkController($controllers)
         {
-            return \Mews\Captcha\Captcha::src($config);
+            return \HieuLe\Active\Active::checkController($controllers);
         }
         
         /**
-         * Generate captcha image html tag
+         * Get the current controller method
          *
-         * @param null $config
-         * @param array $attrs HTML attributes supplied to the image tag where key is the attribute
-         * and the value is the attribute value
          * @return string 
          * @static 
          */ 
-        public static function img($config = null, $attrs = array())
+        public static function getMethod()
         {
-            return \Mews\Captcha\Captcha::img($config, $attrs);
+            return \HieuLe\Active\Active::getMethod();
+        }
+        
+        /**
+         * Get the current action string
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getAction()
+        {
+            return \HieuLe\Active\Active::getAction();
+        }
+        
+        /**
+         * Get the current controller class
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getController()
+        {
+            return \HieuLe\Active\Active::getController();
+        }
+         
+    }
+ 
+}
+
+namespace Laravel\Horizon { 
+
+    class Horizon {
+         
+    }
+ 
+}
+
+namespace Mews\Purifier\Facades { 
+
+    class Purifier {
+        
+        /**
+         * 
+         *
+         * @param $dirty
+         * @param null $config
+         * @return mixed 
+         * @static 
+         */ 
+        public static function clean($dirty, $config = null)
+        {
+            return \Mews\Purifier\Purifier::clean($dirty, $config);
+        }
+        
+        /**
+         * Get HTMLPurifier instance.
+         *
+         * @return \HTMLPurifier 
+         * @static 
+         */ 
+        public static function getInstance()
+        {
+            return \Mews\Purifier\Purifier::getInstance();
         }
          
     }
@@ -14531,6 +15519,8 @@ namespace  {
 
     class Redirect extends \Illuminate\Support\Facades\Redirect {}
 
+    class Redis extends \Illuminate\Support\Facades\Redis {}
+
     class Request extends \Illuminate\Support\Facades\Request {}
 
     class Response extends \Illuminate\Support\Facades\Response {}
@@ -14549,9 +15539,15 @@ namespace  {
 
     class View extends \Illuminate\Support\Facades\View {}
 
-    class Image extends \Intervention\Image\Facades\Image {}
+    class Debugbar extends \Barryvdh\Debugbar\Facade {}
 
-    class Captcha extends \Mews\Captcha\Facades\Captcha {}
+    class API extends \Dingo\Api\Facade\API {}
+
+    class Active extends \HieuLe\Active\Facades\Active {}
+
+    class Horizon extends \Laravel\Horizon\Horizon {}
+
+    class Purifier extends \Mews\Purifier\Facades\Purifier {}
  
 }
 
