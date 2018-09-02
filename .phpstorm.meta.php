@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-09-01 17:35:56.
+    * Generated on 2018-09-02 21:28:08.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -43,7 +43,6 @@ namespace PHPSTORM_META {
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'api.router' => \Dingo\Api\Routing\Router::class,
         'Dingo\Api\Routing\ResourceRegistrar' => \Dingo\Api\Routing\ResourceRegistrar::class,
-        'api.url' => \Dingo\Api\Routing\UrlGenerator::class,
         'api.limiting' => \Dingo\Api\Http\RateLimit\Handler::class,
         'api.http.validator' => \Dingo\Api\Http\RequestValidator::class,
         'Dingo\Api\Http\Validation\Domain' => \Dingo\Api\Http\Validation\Domain::class,
@@ -85,6 +84,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'Overtrue\EasySms\EasySms' => \Overtrue\EasySms\EasySms::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
         'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -180,6 +180,8 @@ namespace PHPSTORM_META {
         'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
         'auth.password.broker' => \Illuminate\Auth\Passwords\PasswordBroker::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
         'purifier' => \Mews\Purifier\Purifier::class,
     ]));
@@ -218,7 +220,6 @@ namespace PHPSTORM_META {
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'api.router' => \Dingo\Api\Routing\Router::class,
         'Dingo\Api\Routing\ResourceRegistrar' => \Dingo\Api\Routing\ResourceRegistrar::class,
-        'api.url' => \Dingo\Api\Routing\UrlGenerator::class,
         'api.limiting' => \Dingo\Api\Http\RateLimit\Handler::class,
         'api.http.validator' => \Dingo\Api\Http\RequestValidator::class,
         'Dingo\Api\Http\Validation\Domain' => \Dingo\Api\Http\Validation\Domain::class,
@@ -260,6 +261,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'Overtrue\EasySms\EasySms' => \Overtrue\EasySms\EasySms::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
         'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -355,6 +357,8 @@ namespace PHPSTORM_META {
         'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
         'auth.password.broker' => \Illuminate\Auth\Passwords\PasswordBroker::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
         'purifier' => \Mews\Purifier\Purifier::class,
     ]));
@@ -393,7 +397,6 @@ namespace PHPSTORM_META {
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'api.router' => \Dingo\Api\Routing\Router::class,
         'Dingo\Api\Routing\ResourceRegistrar' => \Dingo\Api\Routing\ResourceRegistrar::class,
-        'api.url' => \Dingo\Api\Routing\UrlGenerator::class,
         'api.limiting' => \Dingo\Api\Http\RateLimit\Handler::class,
         'api.http.validator' => \Dingo\Api\Http\RequestValidator::class,
         'Dingo\Api\Http\Validation\Domain' => \Dingo\Api\Http\Validation\Domain::class,
@@ -435,6 +438,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'Overtrue\EasySms\EasySms' => \Overtrue\EasySms\EasySms::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
         'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -530,6 +534,8 @@ namespace PHPSTORM_META {
         'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
         'auth.password.broker' => \Illuminate\Auth\Passwords\PasswordBroker::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
         'purifier' => \Mews\Purifier\Purifier::class,
     ]));
@@ -568,7 +574,6 @@ namespace PHPSTORM_META {
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'api.router' => \Dingo\Api\Routing\Router::class,
         'Dingo\Api\Routing\ResourceRegistrar' => \Dingo\Api\Routing\ResourceRegistrar::class,
-        'api.url' => \Dingo\Api\Routing\UrlGenerator::class,
         'api.limiting' => \Dingo\Api\Http\RateLimit\Handler::class,
         'api.http.validator' => \Dingo\Api\Http\RequestValidator::class,
         'Dingo\Api\Http\Validation\Domain' => \Dingo\Api\Http\Validation\Domain::class,
@@ -610,6 +615,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'Overtrue\EasySms\EasySms' => \Overtrue\EasySms\EasySms::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
         'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -705,6 +711,8 @@ namespace PHPSTORM_META {
         'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
         'auth.password.broker' => \Illuminate\Auth\Passwords\PasswordBroker::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
         'purifier' => \Mews\Purifier\Purifier::class,
     ]));
@@ -743,7 +751,6 @@ namespace PHPSTORM_META {
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'api.router' => \Dingo\Api\Routing\Router::class,
         'Dingo\Api\Routing\ResourceRegistrar' => \Dingo\Api\Routing\ResourceRegistrar::class,
-        'api.url' => \Dingo\Api\Routing\UrlGenerator::class,
         'api.limiting' => \Dingo\Api\Http\RateLimit\Handler::class,
         'api.http.validator' => \Dingo\Api\Http\RequestValidator::class,
         'Dingo\Api\Http\Validation\Domain' => \Dingo\Api\Http\Validation\Domain::class,
@@ -785,6 +792,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'Overtrue\EasySms\EasySms' => \Overtrue\EasySms\EasySms::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
         'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -880,6 +888,8 @@ namespace PHPSTORM_META {
         'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
         'auth.password.broker' => \Illuminate\Auth\Passwords\PasswordBroker::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
         'purifier' => \Mews\Purifier\Purifier::class,
     ]));
@@ -918,7 +928,6 @@ namespace PHPSTORM_META {
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'api.router' => \Dingo\Api\Routing\Router::class,
         'Dingo\Api\Routing\ResourceRegistrar' => \Dingo\Api\Routing\ResourceRegistrar::class,
-        'api.url' => \Dingo\Api\Routing\UrlGenerator::class,
         'api.limiting' => \Dingo\Api\Http\RateLimit\Handler::class,
         'api.http.validator' => \Dingo\Api\Http\RequestValidator::class,
         'Dingo\Api\Http\Validation\Domain' => \Dingo\Api\Http\Validation\Domain::class,
@@ -960,6 +969,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'Overtrue\EasySms\EasySms' => \Overtrue\EasySms\EasySms::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
         'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -1055,6 +1065,8 @@ namespace PHPSTORM_META {
         'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
         'auth.password.broker' => \Illuminate\Auth\Passwords\PasswordBroker::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
         'purifier' => \Mews\Purifier\Purifier::class,
     ]));
@@ -1093,7 +1105,6 @@ namespace PHPSTORM_META {
         'command.debugbar.clear' => \Barryvdh\Debugbar\Console\ClearCommand::class,
         'api.router' => \Dingo\Api\Routing\Router::class,
         'Dingo\Api\Routing\ResourceRegistrar' => \Dingo\Api\Routing\ResourceRegistrar::class,
-        'api.url' => \Dingo\Api\Routing\UrlGenerator::class,
         'api.limiting' => \Dingo\Api\Http\RateLimit\Handler::class,
         'api.http.validator' => \Dingo\Api\Http\RequestValidator::class,
         'Dingo\Api\Http\Validation\Domain' => \Dingo\Api\Http\Validation\Domain::class,
@@ -1135,6 +1146,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'Overtrue\EasySms\EasySms' => \Overtrue\EasySms\EasySms::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
         'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -1230,6 +1242,8 @@ namespace PHPSTORM_META {
         'redis.connection' => \Illuminate\Redis\Connections\PredisConnection::class,
         'auth.password' => \Illuminate\Auth\Passwords\PasswordBrokerManager::class,
         'auth.password.broker' => \Illuminate\Auth\Passwords\PasswordBroker::class,
+        'Laravel\Socialite\Contracts\Factory' => \Laravel\Socialite\SocialiteManager::class,
+        'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
         'purifier' => \Mews\Purifier\Purifier::class,
     ]));
