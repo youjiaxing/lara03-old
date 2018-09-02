@@ -14,10 +14,10 @@ class VerificationCodesController extends Controller
         $phone = $request->phone;
 
         if (!app()->environment('production')) {
-            $code = 1234;
+            $code = '1234';
         } else {
             // 生成4位随机数, 左侧补0
-            $code = random_int(1000, 9999);
+            $code = strval(random_int(1000, 9999));
 
             try {
                 $result = $easySms->send($phone, [
