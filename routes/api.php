@@ -30,4 +30,5 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers\Api'], function ($api)
         // 图片验证码
         $api->post('captchas', 'CaptchasController@store')->name('api.captchas.store');
     });
+
 });
