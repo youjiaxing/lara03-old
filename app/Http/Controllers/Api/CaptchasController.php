@@ -17,6 +17,7 @@ class CaptchasController extends \App\Http\Controllers\Api\Controller
         $captcha = $captchaBuilder->build();
         $expiredAt = now()->addMinutes(2);
         \Cache::put($key, ['phone' => $phone, 'code'=>$captcha->getPhrase()], $expiredAt);
+        \Log::debug("$phone 图片验证码: ".$captcha->getPhrase());
 
         $result = [
             'captcha_key' => $key,
