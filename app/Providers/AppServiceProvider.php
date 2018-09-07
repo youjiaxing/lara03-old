@@ -11,6 +11,9 @@ use App\Observers\LinkObserver;
 use App\Observers\ReplyObserver;
 use App\Observers\TopicObserver;
 use App\Observers\UserObserver;
+use Dingo\Api\Facade\API;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\ServiceProvider;
 use VIACreative\SudoSu\SudoSu;
 
@@ -46,5 +49,13 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
             $this->app->register(\VIACreative\SudoSu\ServiceProvider::class);
         }
+
+        \API::error(function (ModelNotFoundException $e) {
+            abort(404, $e->getMessage());
+        });
+
+        \API::error(function (AuthorizationException $e) {
+            abort(403, $e->getMessage());
+        });
     }
 }
