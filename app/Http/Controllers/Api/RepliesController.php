@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\Api\ReplyRequest;
 use App\Models\Reply;
 use App\Models\Topic;
+use App\Models\User;
 use App\Transformers\ReplyTransformer;
+use Dingo\Api\Http\Request;
 
 class RepliesController extends Controller
 {
@@ -29,5 +31,17 @@ class RepliesController extends Controller
         $this->authorize('destroy', $reply);
         $reply->delete();
         return $this->response->noContent();
+    }
+
+    public function index(Topic $topic)
+    {
+        $replies = $topic->replies()->paginate(20);
+        return $this->response->paginator($replies, new ReplyTransformer());
+    }
+
+    public function userIndex(User $user)
+    {
+        $replies = $user->replies()->recent()->paginate(20);
+        return $this->response->paginator($replies, new ReplyTransformer());
     }
 }

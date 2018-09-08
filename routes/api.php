@@ -62,6 +62,10 @@ $api->version('v1', [
         $api->get('users/{user}/topics', 'TopicsController@userIndex')->name('api.users.topics.index');
         // 话题详情
         $api->get('topics/{topic}', 'TopicsController@show')->name('api.topics.show');
+        // 话题评论列表
+        $api->get('topics/{topic}/replies', 'RepliesController@index')->name('api.topics.replies.index');
+        // 某个用户的所有评论
+        $api->get('users/{user}/replies', 'RepliesController@userIndex')->name('api.users.replies.index');
         /*******************************************************************/
 
 
@@ -89,6 +93,7 @@ $api->version('v1', [
             $api->post('topics/{topic}/replies', 'RepliesController@store')->name('api.topics.replies.store');
             // 删除回复
             $api->delete('topics/{topic}/replies/{reply}', 'RepliesController@destroy')->name('api.topics.replies.destroy');
+
         });
     });
 });

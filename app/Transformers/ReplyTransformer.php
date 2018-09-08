@@ -4,6 +4,8 @@ use App\Models\Reply;
 
 class ReplyTransformer extends \League\Fractal\TransformerAbstract
 {
+    protected $availableIncludes = ['user', 'topic'];
+
     public function transform(Reply $reply)
     {
         return [
@@ -18,6 +20,11 @@ class ReplyTransformer extends \League\Fractal\TransformerAbstract
 
     public function includeUser(Reply $reply)
     {
-        return $this->item($reply->user, new \App\Transformers\UserTransformer());
+        return $this->item($reply->user, new UserTransformer());
+    }
+
+    public function includeTopic(Reply $reply)
+    {
+        return $this->item($reply->topic, new TopicTransformer());
     }
 }
