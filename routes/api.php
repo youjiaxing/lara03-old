@@ -66,6 +66,9 @@ $api->version('v1', [
         $api->get('topics/{topic}/replies', 'RepliesController@index')->name('api.topics.replies.index');
         // 某个用户的所有评论
         $api->get('users/{user}/replies', 'RepliesController@userIndex')->name('api.users.replies.index');
+
+        // 推荐资源列表
+        $api->get('links', 'LinksController@index')->name('api.links.index');
         /*******************************************************************/
 
 
