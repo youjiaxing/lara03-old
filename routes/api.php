@@ -98,7 +98,10 @@ $api->version('v1', [
             $api->get('user/notifications', 'NotificationsController@index')->name('api.user.notifications.index');
             // 通知统计
             $api->get('user/notifications/stats', 'NotificationsController@stats')->name('api.user.notifications.stats');
-
+            // 标记所有通知已读
+            $api->patch('user/read/notifications', 'NotificationsController@read')->name('api.user.notifications.read');
+            // 标记指定通知已读
+            $api->put('user/read/notifications/{notification}', 'NotificationsController@readOne')->name('api.user.notifications.read_one');
         });
     });
 });
