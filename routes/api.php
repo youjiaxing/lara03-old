@@ -69,6 +69,8 @@ $api->version('v1', [
 
         // 推荐资源列表
         $api->get('links', 'LinksController@index')->name('api.links.index');
+        // 活跃用户列表
+        $api->get('actived/users', 'UsersController@activeIndex')->name('api.actived.users.index');
         /*******************************************************************/
 
 
