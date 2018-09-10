@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-09-06 20:59:00.
+    * Generated on 2018-09-10 20:01:55.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -100,6 +100,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
         'Overtrue\EasySms\EasySms' => \Overtrue\EasySms\EasySms::class,
+        'JPush\Client' => \JPush\Client::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
         'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -292,6 +293,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
         'Overtrue\EasySms\EasySms' => \Overtrue\EasySms\EasySms::class,
+        'JPush\Client' => \JPush\Client::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
         'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -484,6 +486,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
         'Overtrue\EasySms\EasySms' => \Overtrue\EasySms\EasySms::class,
+        'JPush\Client' => \JPush\Client::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
         'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -676,6 +679,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
         'Overtrue\EasySms\EasySms' => \Overtrue\EasySms\EasySms::class,
+        'JPush\Client' => \JPush\Client::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
         'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -868,6 +872,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
         'Overtrue\EasySms\EasySms' => \Overtrue\EasySms\EasySms::class,
+        'JPush\Client' => \JPush\Client::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
         'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -1060,6 +1065,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
         'Overtrue\EasySms\EasySms' => \Overtrue\EasySms\EasySms::class,
+        'JPush\Client' => \JPush\Client::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
         'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
@@ -1252,6 +1258,7 @@ namespace PHPSTORM_META {
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
         'Overtrue\EasySms\EasySms' => \Overtrue\EasySms\EasySms::class,
+        'JPush\Client' => \JPush\Client::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
         'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,

@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.5.42 on 2018-09-06 20:58:55.
+ * Generated for Laravel 5.5.42 on 2018-09-10 20:01:51.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -9,7 +9,10 @@
  * @see https://github.com/barryvdh/laravel-ide-helper
  */
 
-namespace Illuminate\Support\Facades { 
+namespace Illuminate\Support\Facades {
+
+    use Illuminate\Auth\TokenGuard;
+    use Tymon\JWTAuth\JWTGuard;
 
     class App {
         
@@ -1489,7 +1492,7 @@ namespace Illuminate\Support\Facades {
          * Attempt to get the guard from the local cache.
          *
          * @param string $name
-         * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard 
+         * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard|JWTGuard
          * @static 
          */ 
         public static function guard($name = null)
